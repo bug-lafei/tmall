@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soecode.lyf.dao.orderItemDao">
+    <select id="listAll" parameterType="int" resultType="orderItem">
+        select * from orderItem where uid=#{uid}
+    </select>
+    <select id="listAllO" resultType="orderItem">
+        select *
+        from orderitem;
+    </select>
+    <insert id="add" parameterType="orderItem">
+        insert into orderItem (id, oid, pid, uid, number,isEvaluation)
+        values (#{id},#{oid},#{pid},#{uid},#{number},#{isEvaluation});
+    </insert>
+    <select id="listByOid" parameterType="String" resultType="orderItem">
+        select *
+        from orderitem
+        where oid = #{oid};
+    </select>
+    <select id="selectByPid" resultType="orderItem" parameterType="orderItem">
+        select *
+        from orderitem
+        where pid = #{pid} and uid=#{uid};
+    </select>
+    <delete id="delete" parameterType="String">
+        delete
+        from orderitem
+        where oid=#{oid};
+    </delete>
+    <update id="update" parameterType="orderItem">
+        update orderItem
+        set isEvaluation = #{isEvaluation}
+        where pid=#{pid};
+    </update>
+</mapper>

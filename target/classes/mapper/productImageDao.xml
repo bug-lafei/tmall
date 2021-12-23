@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soecode.lyf.dao.productImageDao">
+    <select id="listAll" resultType="productImage">
+        select * from productImage
+    </select>
+    <select id="getById1" resultType="productImage" parameterType="int">
+        select * from productImage where pid=#{pid}
+    </select>
+    <insert id="add"  parameterType="productImage" useGeneratedKeys="true" keyProperty="id">
+        insert productImage(id,pid,type,image) values (#{id},#{pid},#{type},#{image})
+    </insert>
+    <delete id="delete" parameterType="int">
+        delete
+        from productImage
+        where id=#{id};
+    </delete>
+    <update id="update" parameterType="productImage">
+        update productImage
+        set image = #{image}
+        where id=#{id};
+    </update>
+</mapper>

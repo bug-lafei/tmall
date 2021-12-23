@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soecode.lyf.dao.productDao">
+    <select id="listAll" resultType="product">
+        select * from product
+    </select>
+    <select id="getById1" parameterType="int" resultType="product">
+        select * from product where cid=#{cid}
+    </select>
+    <select id="getById2" parameterType="int" resultType="product">
+        select * from product where id=#{id}
+    </select>
+    <select id="likeSelect" resultType="product" parameterType="String">
+        select * from product where name like CONCAT('%',#{keyword},'%') or tittle like CONCAT('%',#{keyword},'%');
+    </select>
+    <select id="pageSelect" resultType="product" >
+        select * from product where name like CONCAT('%',#{keyword},'%') or tittle like CONCAT('%',#{keyword},'%') limit #{stat},#{count};
+    </select>
+    <select id="listOne" parameterType="int" resultType="product">
+        select *
+        from product where id=#{id};
+    </select>
+    <select id="productSum" parameterType="String" resultType="int">
+        select count(*) from product where name like CONCAT('%',#{keyword},'%') or tittle like CONCAT('%',#{keyword},'%');
+    </select>
+    <select id="getIdPage" resultType="product" parameterType="int">
+        select * from product where cid=#{cid} limit #{stat},#{count};
+    </select>
+    <select id="cIdProductSum" parameterType="int" resultType="int">
+        select count(*) from product where cid=#{cid}
+    </select>
+    <insert id="add" parameterType="product"  useGeneratedKeys="true" keyProperty="id">
+        insert product(id,name,tittle,oprice,nprice,store,cid) values (#{id},#{name},#{tittle},#{oprice},#{nprice},#{store},#{cid})
+    </insert>
+    <delete id="delete" parameterType="product">
+        delete
+        from product
+        where id=#{id};
+    </delete>
+    <update id="update" parameterType="product">
+        update product
+        set name=#{name},tittle=#{tittle},oprice=#{oprice},nprice=#{nprice},store=#{store}
+        where id=#{id};
+    </update>
+</mapper>

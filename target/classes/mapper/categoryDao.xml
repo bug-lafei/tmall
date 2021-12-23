@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soecode.lyf.dao.categoryDao">
+    <select id="listAll" resultType="category">
+        select * from category limit 0,18;
+    </select>
+    <select id="getById1" parameterType="int" resultType="category">
+        select * from category where id=#{id};
+    </select>
+    <select id="likeSelect" parameterType="String" resultType="category">
+        SELECT * FROM category WHERE `categoryname` LIKE CONCAT('%',#{keyword},'%')
+    </select>
+    <select id="pageSelect" resultType="category" >
+        select * from category where categoryname like CONCAT('%',#{keyword},'%') limit #{stat},#{count};
+    </select>
+    <insert id="add" parameterType="category" useGeneratedKeys="true" keyProperty="id">
+         insert category(id,categoryname) values (#{id},#{categoryname});
+    </insert>
+    <delete id="delete" parameterType="int">
+        DELETE FROM category where id=#{id}
+    </delete>
+    <update id="update" parameterType="category">
+        UPDATE category set `categoryname`=#{categoryname} WHERE id=#{id}
+    </update>
+
+</mapper>

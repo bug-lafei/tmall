@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soecode.lyf.dao.carItemDao">
+<select id="listOne" parameterType="int" resultType="carItem">
+    select *
+    from carItem
+    where uid = #{uid};
+</select>
+    <select id="listCount" parameterType="int" resultType="int">
+        select count(*)
+        from carItem
+        where uid = #{uid};
+    </select>
+    <select id="getByPid" resultType="carItem" parameterType="int">
+        select *
+        from carItem
+        where pid = #{pid};
+    </select>
+    <select id="getByoId" parameterType="int" resultType="carItem">
+        select *
+        from carItem
+        where id = #{id};
+    </select>
+<insert id="add" parameterType="carItem" keyProperty="id" useGeneratedKeys="true">
+    insert into carItem (id, pid, uid, count1)
+    values (#{id},#{pid},#{uid},#{count1});
+</insert>
+    <update id="update" parameterType="carItem">
+        update carItem
+        set count1 = #{count1}
+        where id=#{id};
+    </update>
+    <delete id="delete" parameterType="int" >
+        delete
+        from carItem
+        where id=#{id};
+    </delete>
+</mapper>

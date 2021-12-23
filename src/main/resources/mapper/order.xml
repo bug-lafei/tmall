@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soecode.lyf.dao.orderDao">
+<insert id="add" parameterType="order" useGeneratedKeys="true" keyProperty="id">
+    insert into order1 (id,orderCode,uid,addressId,status,createDate,payDate,deliveyDate,userMessage,confirmDate,totalPrice) values (#{id},#{orderCode},#{uid},#{addressId},#{status},#{createDate},#{payDate},#{deliveyDate},#{userMessage},#{confirmDate},#{totalPrice});
+</insert>
+<select id="listAll" parameterType="int" resultType="order">
+    select *
+    from order1 where uid=#{uid};
+</select>
+    <select id="listAllO" resultType="order">
+        select *
+        from order1;
+    </select>
+    <update id="update" parameterType="order">
+        update order1
+        set status = #{status},payDate=#{payDate}
+        where orderCode=#{orderCode};
+    </update>
+    <update id="updateConfirmDate" parameterType="order">
+        update order1
+        set status = #{status},ConfirmDate=#{confirmDate}
+        where orderCode=#{orderCode};
+    </update>
+    <update id="updateDelivey" parameterType="order">
+        update order1
+        set status = #{status},deliveyDate=#{deliveyDate}
+        where orderCode=#{orderCode};
+    </update>
+    <select id="getByOrderCode" parameterType="String" resultType="order">
+        select * from order1 where orderCode=#{orderCode}
+    </select>
+    <delete id="delete" parameterType="String">
+        delete
+        from order1
+        where orderCode=#{orderCode};
+    </delete>
+
+</mapper>

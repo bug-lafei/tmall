@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soecode.lyf.dao.presonCenterDao">
+    <insert id="add" parameterType="presonCenter" useGeneratedKeys="true" keyProperty="id">
+        insert into presonCenter (id,uid,uemail,utel,uname)
+        values (#{id},#{uid},#{uemail},#{utel},#{uname});
+    </insert>
+    <select id="selectOne" parameterType="int" resultType="presoncenter">
+        select *
+        from presonCenter
+        where uid = #{uid};
+    </select>
+    <select id="selectByNameByEmail" parameterType="presoncenter" resultType="presoncenter">
+        select *
+        from presonCenter
+        where uname = #{uname} or uemail = #{uemail};
+    </select>
+    <select id="selectByName" parameterType="String" resultType="presoncenter">
+        select *
+        from presonCenter
+        where uname = #{uname};
+    </select>
+    <update id="update" parameterType="presonCenter">
+        update presonCenter
+        set uemail = #{uemail},utel=#{utel},uname=#{uname}
+        where uid=#{uid};
+    </update>
+</mapper>

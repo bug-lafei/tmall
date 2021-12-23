@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soecode.lyf.dao.evaluationDao">
+    <insert id="add" parameterType="evaluation" keyProperty="id" useGeneratedKeys="true">
+        insert into evaluation (id,pid,uid,createDate,message)
+        values (#{id},#{pid},#{uid},#{createDate},#{message});
+    </insert>
+    <select id="list" resultType="evaluation">
+        select *
+        from evaluation;
+    </select>
+    <select id="listPid" parameterType="int" resultType="evaluation">
+        select *
+        from evaluation where pid=#{pid};
+    </select>
+</mapper>
