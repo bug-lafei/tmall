@@ -102,6 +102,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.tomcat9">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AppointmentDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ssm" />
       <extension name="coverage">
@@ -478,7 +491,7 @@
       <workItem from="1640083348950" duration="4335000" />
       <workItem from="1640175991123" duration="2105000" />
       <workItem from="1640220440626" duration="2687000" />
-      <workItem from="1640223171771" duration="968000" />
+      <workItem from="1640223171771" duration="1666000" />
     </task>
     <servers />
   </component>
